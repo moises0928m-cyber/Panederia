@@ -43,7 +43,7 @@ export default function Login() {
   };
 
   return (
-    <div className="h-screen w-full bg-cover bg-center flex items-center justify-center relative bg-[url(/gemini.png)]">
+    <div className="h-screen w-full bg-cover bg-center flex items-center justify-center relative bg-[url(/geminis.png)]">
       <div className="absolute inset-0 bg-black/20"></div>
 
       <div className="relative z-10 bg-[#decdbb] bg-opacity-90 p-8 rounded-xl shadow-lg w-80">
@@ -51,7 +51,7 @@ export default function Login() {
           Iniciar Sesión
         </h2>
 
-        <form onSubmit={formulario} className="flex flex-col gap-4">
+        <form onSubmit={formulario} className=" flex flex-col gap-4">
           <div className="flex flex-col">
             <label className="text-sm font-medium text-gray-700">Correo</label>
             <input

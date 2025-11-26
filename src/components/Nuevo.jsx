@@ -39,7 +39,7 @@ export default function Nuevo() {
 
   return (
     <>
-      <div className=" h-screen w-full bg-[url(/nuevo.png)] bg-no-repeat bg-center bg-cover relative">
+      <div className="h-screen w-full bg-[url(/nuevos.png)] bg-no-repeat bg-center bg-cover relative">
         <div className="flex items-center justify-center absolute inset-0 bg-black/20">
           <div className="relative z-10 bg-[#decdbb] bg-opacity-90 p-8 rounded-xl shadow-lg w-80">
             <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
