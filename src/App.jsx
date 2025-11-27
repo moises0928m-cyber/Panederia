@@ -7,6 +7,7 @@ import LandingPage from "./components/LandingPage";
 import Login from "./components/Login";
 import Home from "./pages/Home";
 import Nuevo from "./pages/Nuevo";
+import CardCategorias from "./components/CardCategorias";
 
 export default function App() {
   return (
@@ -22,10 +23,12 @@ export default function App() {
           <Route path="/newuser" element={<Nuevo />} />
 
           <Route path="/home" element={<Home />} />
+
+          <Route path="/home/:categoria" element={<CardCategorias />} />
         </Routes>
       </div>
 
       <Footer />
     </BrowserRouter>
-
-
+  );
+}
