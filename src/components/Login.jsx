@@ -29,8 +29,12 @@ export default function Login() {
         }
       );
       const data = await respuesta.json();
+      if (!respuesta.ok) {
+        throw new Error(data.message || "credenciales incorrectas");
+      }
       localStorage.setItem("token", data.access_token);
       navigate("/home");
+      console.log(data);
     } catch (erro) {
       setError(erro.message);
     } finally {

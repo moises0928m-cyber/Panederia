@@ -30,6 +30,9 @@ export default function Nuevo() {
         }
       );
       const data = respuesta.json();
+      if (!respuesta.ok) {
+        throw new Error(data.message || "credenciales incorrectas");
+      }
       alert("usuario creado correctamente");
       navigate("/");
     } catch (err) {
