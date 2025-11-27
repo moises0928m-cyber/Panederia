@@ -1,18 +1,31 @@
 import React from "react";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import LandingPage from "./components/LandingPage";
 import Login from "./components/Login";
-import { Route, Routes, Navigate } from "react-router-dom";
-import Home from "./components/Home";
-import Nuevo from "./components/Nuevo";
+import Home from "./pages/Home";
+import Nuevo from "./pages/Nuevo";
 
 export default function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Login />}></Route>
-        <Route path="/home" element={<Home />} />
-        <Route path="/newuser" element={<Nuevo />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </>
-  );
-}
+    <BrowserRouter>
+      <Header />
+
+      <div className="grow">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/newuser" element={<Nuevo />} />
+
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </div>
+
+      <Footer />
+    </BrowserRouter>
+
+
