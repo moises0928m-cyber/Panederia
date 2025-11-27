@@ -7,10 +7,14 @@ export default function Login() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+
+
+
   const navigate = useNavigate();
 
   async function formulario(e) {
     e.preventDefault();
+
     setError(null);
 
     if (!email || !password) {
@@ -18,7 +22,13 @@ export default function Login() {
       return;
     }
 
+    
+
+
     setLoading(true);
+    setError(null);
+    console.log(email);
+    console.log(password);
 
     try {
       const respuesta = await fetch(
@@ -35,6 +45,7 @@ export default function Login() {
         }
       );
 
+
       const data = await respuesta.json();
 
       if (!respuesta.ok) {
@@ -47,6 +58,17 @@ export default function Login() {
       navigate("/home");
     } catch (erro) {
       setError("Error de conexión con el servidor");
+
+      const data = await respuesta.json();
+      if (!respuesta.ok) {
+        throw new Error(data.message || "credenciales incorrectas");
+      }
+      localStorage.setItem("token", data.access_token);
+      navigate("/home");
+      console.log(data);
+    } catch (erro) {
+      setError(erro.message);
+
     } finally {
       setLoading(false);
     }
@@ -65,11 +87,15 @@ export default function Login() {
           Iniciar Sesión
         </h2>
 
+
         {error && (
           <p className="text-red-600 text-center text-sm mb-2">{error}</p>
         )}
 
         <form onSubmit={formulario} className="flex flex-col gap-4">
+
+        
+
           <div className="flex flex-col">
             <label className="text-sm font-medium text-gray-700">Correo</label>
             <input
@@ -85,16 +111,18 @@ export default function Login() {
               Contraseña
             </label>
             <input
+
               type="password"
               className="mt-1 p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:ring-gray-400"
               placeholder="••••••••"
               onChange={(e) => setPassword(e.target.value)}
+
             />
           </div>
 
           <button
             type="submit"
-            disabled={loading}
+           disabled={loading}
             className="mt-4 w-full bg-gray-800 text-white p-2 rounded-lg hover:bg-gray-900 transition disabled:opacity-50"
           >
             {loading ? "Cargando..." : "Entrar"}
@@ -105,6 +133,12 @@ export default function Login() {
             className="text-sm w-full flex justify-center cursor-pointer text-blue-900 hover:underline"
           >
             ¿No tienes cuenta? Crear nueva
+
+            className="mt-4 w-full bg-gray-800 text-white p-2 rounded-lg hover:bg-gray-900 transition"
+          >
+            Entrar
+          </button>
+        
           </p>
         </form>
       </div>
