@@ -8,27 +8,30 @@ import Login from "./components/Login";
 import Home from "./pages/Home";
 import Nuevo from "./pages/Nuevo";
 import CardCategorias from "./components/CardCategorias";
+import { CarritoProvider } from "./context/CarritoContex";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <CarritoProvider>
+        <Header />
 
-      <div className="grow">
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
+        <div className="grow">
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
 
-          <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login />} />
 
-          <Route path="/newuser" element={<Nuevo />} />
+            <Route path="/newuser" element={<Nuevo />} />
 
-          <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            {/* Categorias */}
+            <Route path="/home/:categoria" element={<CardCategorias />} />
+          </Routes>
+        </div>
 
-          <Route path="/home/:categoria" element={<CardCategorias />} />
-        </Routes>
-      </div>
-
-      <Footer />
+        <Footer />
+      </CarritoProvider>
     </BrowserRouter>
   );
 }

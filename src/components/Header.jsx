@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useModal } from "../hooks/useModal";
+import Carrito from "./Carrito";
 
 const Header = () => {
+  const { open, abrir, cerrar } = useModal();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -57,6 +61,14 @@ const Header = () => {
             Redes
           </a>
         </div>
+        <button onClick={abrir} className="ml-8">
+          <img
+            width="20"
+            height="20"
+            src="https://img.icons8.com/ios-glyphs/30/shopping-cart--v1.png"
+            alt="carrito"
+          />
+        </button>
       </div>
 
       <div
@@ -104,6 +116,7 @@ const Header = () => {
           </a>
         </div>
       </div>
+      {open && <Carrito cerrar={cerrar} />}
     </header>
   );
 };
