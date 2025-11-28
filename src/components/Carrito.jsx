@@ -6,6 +6,12 @@ export default function Carrito({ cerrar }) {
   const { carrito, eliminarDelCarrito, vaciarCarrito, totalProductos } =
     useCarrito();
 
+  console.log(carrito);
+
+  const enviar = () => {
+    alert(`Se a inviado correctamente tus productos 
+total : ${totalProductos}`);
+  };
   return (
     <>
       <div
@@ -82,10 +88,10 @@ export default function Carrito({ cerrar }) {
                 </button>
 
                 <button
-                  onClick={cerrar}
+                  onClick={enviar}
                   className="bg-[#81461c] hover:bg-[#6d3a17] text-white py-2 px-6 rounded"
                 >
-                  Cerrar
+                  Enviar
                 </button>
               </div>
             </>

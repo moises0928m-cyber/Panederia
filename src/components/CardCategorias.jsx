@@ -14,7 +14,6 @@ export default function CardCategorias() {
       .then((res) => res.json())
       .then((data) => setPan(data));
   }, [categoria]);
-  console.log(pan);
 
   const handleAgregar = (producto) => {
     agregarAlCarrito(producto);
@@ -25,8 +24,8 @@ export default function CardCategorias() {
     <>
       <div className="bg-[url(/card.png)] w-full h-screen bg-no-repeat bg-center bg-cover relative ">
         <div className=" absolute inset-0 bg-black/20 w-full ">
-          <div className=" h-full bg-opacity-90 p-8 rounded-xl shadow-lg w-full  ">
-            <div className="grid grid-cols-1  md:grid-cols-3 gap-6 place-items-center">
+          <div className=" h-screen bg-opacity-90 p-8 rounded-xl shadow-lg w-full flex justify-evenly overflow-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-6  place-items-center ">
               {pan?.map((pan, i) => (
                 <div
                   key={i}
