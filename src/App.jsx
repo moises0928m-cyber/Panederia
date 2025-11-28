@@ -9,7 +9,7 @@ import Nuevo from "./pages/Nuevo";
 import CardCategorias from "./components/CardCategorias";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { CarritoProvider } from "./context/CarritoContex";
-
+import Contact from "./pages/Contact"; // <-- Agregado
 
 export default function App() {
   return (
@@ -17,39 +17,39 @@ export default function App() {
       <CarritoProvider>
         <Header />
 
+        <div className="grow">
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/newuser" element={<Nuevo />} />
 
-      <div className="grow">
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/newuser" element={<Nuevo />} />
+            <Route
+              path="/home"
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
 
-          <Route
-            path="/home"
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/home/:categoria"
-            element={
-              <ProtectedRoute>
-                <CardCategorias />
-              </ProtectedRoute>
-            }
-          />
+            <Route
+              path="/home/:categoria"
+              element={
+                <ProtectedRoute>
+                  <CardCategorias />
+                </ProtectedRoute>
+              }
+            />
 
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </div>
+            {/* RUTA PARA CONTACT */}
+            <Route path="/contact" element={<Contact />} />
 
-      <Footer />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
 
-      
+        <Footer />
       </CarritoProvider>
-
     </BrowserRouter>
   );
 }

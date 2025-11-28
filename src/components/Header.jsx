@@ -45,12 +45,20 @@ const Header = () => {
           <Link to="/home" className="hover:text-[#E89A4C] transition">
             Home
           </Link>
-          <a href="#contact" className="hover:text-[#E89A4C] transition">
+          <Link to="/contact" className="hover:text-[#E89A4C] transition">
             Contact
-          </a>
-          <a href="#fanpage" className="hover:text-[#E89A4C] transition">
+          </Link>
+          <button
+            onClick={() =>
+              window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth",
+              })
+            }
+            className="hover:text-[#E89A4C] transition"
+          >
             Redes
-          </a>
+          </button>
 
           {token && (
             <button

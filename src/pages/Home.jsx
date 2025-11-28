@@ -21,8 +21,14 @@ export default function Home() {
 
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-6 pt-24">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 w-full max-w-6xl">
+          {/* PANES */}
           <Link to="Panaderia-casero">
-            <div className="relative bg-black rounded-xl overflow-hidden border-3 border-black h-[150px] lg:h-[750px] shadow-xl shadow-black/60 transition-transform duration-300 active:scale-105 cursor-pointer">
+            <div
+              className="relative bg-black rounded-xl overflow-hidden border-3 border-black 
+              h-[150px] lg:h-[750px] shadow-xl shadow-black/60 
+              transition-transform duration-300 
+              active:scale-105 lg:hover:scale-105 cursor-pointer"
+            >
               <img src="/panes.jpg" className="w-full h-full object-cover" />
 
               <div className="absolute bottom-0 w-full bg-linear-to-t from-black/70 to-transparent p-3 text-center">
@@ -36,8 +42,14 @@ export default function Home() {
             </div>
           </Link>
 
+          {/* FACTURAS */}
           <Link to="Panaderia-dulce">
-            <div className="relative bg-black rounded-xl overflow-hidden border-3 border-black h-[150px] lg:h-[750px] shadow-xl shadow-black/60 transition-transform duration-300 active:scale-105 cursor-pointer">
+            <div
+              className="relative bg-black rounded-xl overflow-hidden border-3 border-black 
+              h-[150px] lg:h-[750px] shadow-xl shadow-black/60 
+              transition-transform duration-300 
+              active:scale-105 lg:hover:scale-105 cursor-pointer"
+            >
               <img src="/facturas.jpg" className="w-full h-full object-cover" />
 
               <div className="absolute bottom-0 w-full bg-linear-to-t from-black/70 to-transparent p-3 text-center">
@@ -50,8 +62,15 @@ export default function Home() {
               </div>
             </div>
           </Link>
+
+          {/* MASAS FINAS */}
           <Link to="Panaderia-galleta">
-            <div className="relative bg-black rounded-xl overflow-hidden border-3 border-black h-[150px] lg:h-[750px] shadow-xl shadow-black/60 transition-transform duration-300 active:scale-105 cursor-pointer">
+            <div
+              className="relative bg-black rounded-xl overflow-hidden border-3 border-black 
+              h-[150px] lg:h-[750px] shadow-xl shadow-black/60 
+              transition-transform duration-300 
+              active:scale-105 lg:hover:scale-105 cursor-pointer"
+            >
               <img
                 src="/masasfinas.jpeg"
                 className="w-full h-full object-cover"
@@ -67,8 +86,15 @@ export default function Home() {
               </div>
             </div>
           </Link>
+
+          {/* DONAS */}
           <Link to="Panaderia-dona">
-            <div className="relative bg-black rounded-xl overflow-hidden border-3 border-black h-[150px] lg:h-[750px] shadow-xl shadow-black/60 transition-transform duration-300 active:scale-105 cursor-pointer">
+            <div
+              className="relative bg-black rounded-xl overflow-hidden border-3 border-black 
+              h-[150px] lg:h-[750px] shadow-xl shadow-black/60 
+              transition-transform duration-300 
+              active:scale-105 lg:hover:scale-105 cursor-pointer"
+            >
               <img src="/Donas.jpg" className="w-full h-full object-cover" />
 
               <div className="absolute bottom-0 w-full bg-linear-to-t from-black/70 to-transparent p-3 text-center">
