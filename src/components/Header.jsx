@@ -1,24 +1,19 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useModal } from "../hooks/useModal";
 import Carrito from "./Carrito";
 
-
 const Header = () => {
-  const { open, abrir, cerrar } = useModal();
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const navigate = useNavigate();
   const location = useLocation();
+  const { open, abrir, cerrar } = useModal();
 
-  
   useEffect(() => {
     setToken(localStorage.getItem("token"));
   }, [location]);
 
-  
   useEffect(() => {
     const handleTokenChange = () => setToken(localStorage.getItem("token"));
     window.addEventListener("token-changed", handleTokenChange);
@@ -34,21 +29,18 @@ const Header = () => {
   return (
     <header className="bg-[#FFF2E0] p-4 shadow-md relative">
       <div className="w-full flex items-center justify-between px-4 relative z-10">
-        
         <img
           src="/logo panaderia.png"
           alt="Logo"
           className="h-16 w-16 sm:h-18 sm:w-18 md:h-20 md:w-20 lg:h-24 lg:w-24 drop-shadow-md shrink-0"
         />
 
-        
         <div className="flex-1 flex justify-center px-4">
           <h1 className="text-lg sm:text-xl md:text-2xl lg:text-4xl 2xl:text-6xl font-serif italic text-[#6A3A1A] drop-shadow-md text-center truncate">
             Pan de los Últimos Días
           </h1>
         </div>
 
-        
         <nav className="hidden lg:flex space-x-7.5 text-lg text-[#6A3A1A] z-20 shrink-0">
           <Link to="/home" className="hover:text-[#E89A4C] transition">
             Home
@@ -70,7 +62,6 @@ const Header = () => {
           )}
         </nav>
 
-        
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="lg:hidden text-[#6A3A1A] focus:outline-none z-20 ml-4 shrink-0"
@@ -91,18 +82,6 @@ const Header = () => {
             />
           </svg>
         </button>
-
-        <div className="hidden lg:flex space-x-8 text-lg text-[#6A3A1A] z-20">
-          <a href="#home" className="hover:text-[#E89A4C] transition">
-            Home
-          </a>
-          <a href="#contact" className="hover:text-[#E89A4C] transition">
-            Contact
-          </a>
-          <a href="#fanpage" className="hover:text-[#E89A4C] transition">
-            Redes
-          </a>
-        </div>
         <button onClick={abrir} className="ml-8">
           <img
             width="20"
@@ -113,7 +92,6 @@ const Header = () => {
         </button>
       </div>
 
-      
       <div
         className={`lg:hidden overflow-hidden transition-all duration-500 ${
           isMenuOpen ? "max-h-80" : "max-h-0"

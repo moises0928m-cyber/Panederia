@@ -1,5 +1,5 @@
 import React from "react";
-import { useModal } from "../hooks/useModal";
+
 import { useCarrito } from "../context/CarritoContex";
 
 export default function Carrito({ cerrar }) {
