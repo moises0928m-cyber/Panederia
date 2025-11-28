@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 export function useModal() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(null);
 
-  let abrir = () => {
-    setOpen(true);
+  let abrir = (id) => {
+    setOpen(id);
   };
   let cerrar = () => {
-    setOpen(false);
+    setOpen(null);
   };
 
   return { open, abrir, cerrar };

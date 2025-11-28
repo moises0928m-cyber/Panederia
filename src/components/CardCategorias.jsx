@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCarrito } from "../context/CarritoContex";
+import { useModal } from "../hooks/useModal";
+import Contador from "./Contador";
 
 export default function CardCategorias() {
+  const { abrir, open, cerrar } = useModal();
   const { categoria } = useParams();
   const [pan, setPan] = useState(null);
   const { agregarAlCarrito } = useCarrito();
@@ -14,11 +17,6 @@ export default function CardCategorias() {
       .then((res) => res.json())
       .then((data) => setPan(data));
   }, [categoria]);
-
-  const handleAgregar = (producto) => {
-    agregarAlCarrito(producto);
-    alert(`${producto.name}agregado al carrito`);
-  };
 
   return (
     <>
@@ -44,16 +42,36 @@ export default function CardCategorias() {
                       {pan.name}
                     </h5>
 
-                    <div className="flex  space-x-1 w-full justify-evenly ">
+                    <div className="flex  space-x-1 w-full justify-around ">
                       <span className="text-xl">Precio: ${pan.price}</span>
-                      <button onClick={() => handleAgregar(pan)}>
-                        <img
-                          width="20"
-                          height="20"
-                          src="https://img.icons8.com/ios-glyphs/30/shopping-cart--v1.png"
-                          alt="shopping-cart--v1"
-                        />
-                      </button>
+                      <div className="flex flex-row gap-4 ">
+                        <div className="w-10  flex justify-end">
+                          {open === pan.id ? (
+                            <>
+                              <img
+                                onClick={cerrar}
+                                width="25"
+                                height="25"
+                                src="https://img.icons8.com/color/48/ok--v1.png"
+                                alt="ok--v1"
+                              />
+                              <Contador cerrar={cerrar} producto={pan} />
+                            </>
+                          ) : (
+                            <>
+                              <img
+                                onClick={() => {
+                                  agregarAlCarrito(pan), abrir(pan.id);
+                                }}
+                                width="20"
+                                height="20"
+                                src="https://img.icons8.com/ios-glyphs/30/shopping-cart--v1.png"
+                                alt="shopping-cart--v1"
+                              />
+                            </>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -6,7 +6,7 @@ export default function Carrito({ cerrar }) {
   const { carrito, eliminarDelCarrito, vaciarCarrito, totalProductos } =
     useCarrito();
 
-  console.log(carrito);
+  const total = carrito.reduce((s, i) => s + i.cantidad * i.price, 0);
 
   const enviar = () => {
     alert(`Se a inviado correctamente tus productos 
@@ -22,6 +22,14 @@ total : ${totalProductos}`);
           onClick={(e) => e.stopPropagation()}
           className="bg-[#c2b19f] rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 "
         >
+          <div className="w-full  flex justify-end">
+            <p
+              onClick={cerrar}
+              className="flex justify-end text-2xl font-bold cursor-pointer  w-10"
+            >
+              x
+            </p>
+          </div>
           <div className="flex items-center justify-center mb-6">
             <img
               width="20"
@@ -71,14 +79,22 @@ total : ${totalProductos}`);
 
                     <button
                       onClick={() => eliminarDelCarrito(producto.id)}
-                      className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+                      className="  px-3 py-1 rounded cursor-pointer"
                     >
-                      Eliminar
+                      <img
+                        width="24"
+                        height="24"
+                        src="https://img.icons8.com/material-rounded/24/FA5252/trash.png"
+                        alt="trash"
+                      />
                     </button>
                   </div>
                 ))}
               </div>
-
+              <div className="border-t border-[#81461c] w-full flex justify-between text-lg py-2">
+                <p>Total : </p>
+                <p>${total}</p>
+              </div>
               <div className="flex justify-between items-center pt-4 border-t border-[#81461c]">
                 <button
                   onClick={vaciarCarrito}

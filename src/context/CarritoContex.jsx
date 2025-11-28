@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useMemo } from "react";
 
 const CarritoContext = createContext();
 
@@ -21,6 +21,20 @@ export function CarritoProvider({ children }) {
     }
   };
 
+  const reducirCantidad = (id) => {
+    const item = carrito.find((item) => item.id === id);
+
+    if (item && item.carrito > 1) {
+      setCarrito(
+        carrito.map((item) =>
+          item.id === id ? { ...item, cantidad: item.cantidad - 1 } : item
+        )
+      );
+    } else {
+      eliminarDelCarrito(id);
+    }
+  };
+
   const eliminarDelCarrito = (id) => {
     setCarrito(carrito.filter((item) => item.id !== id));
   };
@@ -29,10 +43,9 @@ export function CarritoProvider({ children }) {
     setCarrito([]);
   };
 
-  const totalProductos = carrito.reduce(
-    (total, item) => total + item.cantidad,
-    0
-  );
+  const totalProductos = useMemo(() => {
+    return carrito.reduce((total, item) => total + item.cantidad, 0);
+  }, [carrito]);
 
   return (
     <CarritoContext.Provider
@@ -42,6 +55,7 @@ export function CarritoProvider({ children }) {
         eliminarDelCarrito,
         vaciarCarrito,
         totalProductos,
+        reducirCantidad,
       }}
     >
       {children}
