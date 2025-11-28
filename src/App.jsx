@@ -8,11 +8,15 @@ import Home from "./pages/Home";
 import Nuevo from "./pages/Nuevo";
 import CardCategorias from "./components/CardCategorias";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { CarritoProvider } from "./context/CarritoContex";
+
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <CarritoProvider>
+        <Header />
+
 
       <div className="grow">
         <Routes>
@@ -42,6 +46,10 @@ export default function App() {
       </div>
 
       <Footer />
+
+      
+      </CarritoProvider>
+
     </BrowserRouter>
   );
 }

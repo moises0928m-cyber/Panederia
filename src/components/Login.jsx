@@ -72,7 +72,7 @@ export default function Login() {
     <div className="h-screen w-full bg-cover bg-center flex items-center justify-center relative bg-[url(/geminis.png)]">
       <div className="absolute inset-0 bg-black/20"></div>
 
-      <div className="relative z-10 bg-[#decdbb] bg-opacity-90 p-8 rounded-xl shadow-lg w-80">
+      <div className="relative z-10 bg-[#decdbb] bg-opacity-90 p-8 rounded-xl shadow-lg w-80 md:text-3xl md:p-10 md:w-100">
         <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
           Iniciar Sesión
         </h2>
@@ -83,17 +83,19 @@ export default function Login() {
 
         <form onSubmit={formulario} className="flex flex-col gap-4">
           <div className="flex flex-col">
-            <label className="text-sm font-medium text-gray-700">Correo</label>
+            <label className="text-sm font-medium text-gray-700 md:text-xl">
+              Correo
+            </label>
             <input
               type="email"
-              className="mt-1 p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:ring-gray-400"
+              className="mt-1 p-2 rounded-lg text-xl border border-gray-300 focus:outline-none focus:ring focus:ring-gray-400"
               placeholder="ejemplo@gmail.com"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-gray-700 md:text-xl">
               Contraseña
             </label>
             <input
@@ -107,14 +109,14 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="mt-4 w-full bg-gray-800 text-white p-2 rounded-lg hover:bg-gray-900 transition disabled:opacity-50"
+            className="mt-4 w-full text-xl bg-gray-800 text-white p-2 rounded-lg hover:bg-gray-900 transition disabled:opacity-50"
           >
             {loading ? "Cargando..." : "Entrar"}
           </button>
 
           <p
             onClick={nuevo}
-            className="text-sm w-full flex justify-center cursor-pointer text-blue-900 hover:underline"
+            className="text-sm md:text-lg w-full flex justify-center cursor-pointer text-blue-900 hover:underline"
           >
             ¿No tienes cuenta? Crear nueva
           </p>

@@ -1,7 +1,13 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useModal } from "../hooks/useModal";
+import Carrito from "./Carrito";
+
 
 const Header = () => {
+  const { open, abrir, cerrar } = useModal();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const navigate = useNavigate();
@@ -85,6 +91,26 @@ const Header = () => {
             />
           </svg>
         </button>
+
+        <div className="hidden lg:flex space-x-8 text-lg text-[#6A3A1A] z-20">
+          <a href="#home" className="hover:text-[#E89A4C] transition">
+            Home
+          </a>
+          <a href="#contact" className="hover:text-[#E89A4C] transition">
+            Contact
+          </a>
+          <a href="#fanpage" className="hover:text-[#E89A4C] transition">
+            Redes
+          </a>
+        </div>
+        <button onClick={abrir} className="ml-8">
+          <img
+            width="20"
+            height="20"
+            src="https://img.icons8.com/ios-glyphs/30/shopping-cart--v1.png"
+            alt="carrito"
+          />
+        </button>
       </div>
 
       
@@ -131,6 +157,7 @@ const Header = () => {
           )}
         </div>
       </div>
+      {open && <Carrito cerrar={cerrar} />}
     </header>
   );
 };
